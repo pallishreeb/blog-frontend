@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'antd';
 import { API_URL } from '../config';
 import axios from 'axios';
@@ -25,11 +25,6 @@ function OtpCountdown({ secondsLeft, setSecondsLeft }) {
         try {
             const email = localStorage.getItem("emailToVerify")
             if(email){
-                const config = {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
                 const res = await axios.post(`${API_URL}/user/sendOtp`, {email});
                 console.log(res.data.message);
                 setSecondsLeft(120)

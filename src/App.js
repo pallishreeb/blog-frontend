@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "../src/components/Header";
 import Home from "./pages/home";
-import Footer from "./components/Footer";
+import AppFooter from "./components/Footer";
 import Post from "./pages/post";
 import Profile from "./pages/profile";
 import PrivateRoute from './pages/privateRoute';
@@ -15,11 +15,9 @@ import Verification from "./pages/verification";
 import Forgotpassword from "./pages/forgotPassword";
 import Resetpassword from "./pages/resetpassword";
 import NotFoundPage from './pages/notFoundPage';
-import { useContext } from 'react';
-import authContext from './context';
 import Contact from './pages/contact';
 function App() {
-  const { token } = useContext(authContext)
+
 
   const params = useParams()
   return (
@@ -46,7 +44,7 @@ function App() {
         <Route exact path="/verify" element={<Verification />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <Footer />
+      <AppFooter />
     </div>
   );
 }

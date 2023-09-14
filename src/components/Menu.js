@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Dropdown, Space,Menu as Menu1,MenuItemProps } from 'antd';
+import { Dropdown, Space,Menu as Menu1 } from 'antd';
 import { allCategories } from '../networkCalls/categories';
 import { Link } from 'react-router-dom';
 import { usePostApi } from '../context/PostProvider';
@@ -8,7 +8,7 @@ import { usePostApi } from '../context/PostProvider';
 const Menu = () => {
 
     const [categories, setCategories] = useState([]);
-    const { state, dispatch } = usePostApi()
+    const {  dispatch } = usePostApi()
     useEffect(() => {
         allCategories().then((res) => {
             setCategories(res)

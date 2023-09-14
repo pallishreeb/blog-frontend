@@ -1,13 +1,11 @@
-import React, { useContext, useEffect,useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
 import authContext from '../context'
 import { toast } from 'react-toastify';
 import "../css/login.css"
 import { Collapse } from 'antd';
 const { Panel } = Collapse;
 const EditProfile = () => {
-    const navigate = useNavigate()
-    const { user, token, isAuthenticated, loadUser,Update } = useContext(authContext)
+    const { user, token,Update } = useContext(authContext)
     const [password, setPassword] = useState("")
       const [newPassword, setNewPassword] = useState("")
       const [confirmPassword, setConfirmPassword] = useState("")
