@@ -15,7 +15,7 @@ const apiReducer = (state, action) => {
         case "ADD_COMMENT":
             return {
                 ...state,
-                comments: [...state.comments, action.payload],
+                comments: [action.payload, ...state.comments],
             };
         case "FETCH_COMMENTS":
             return {
@@ -39,23 +39,23 @@ const apiReducer = (state, action) => {
         case "ADD_REPLY":
             return {
                 ...state,
-                replies: [...state.replies, action.payload],
+                replies: [action.payload, ...state.replies],
             };
         case "FETCH_REPLIES":
             return {
                 ...state,
                 replies: [...state.replies, ...action.payload],
             };
-        case "DELETE_REPLY": 
-           
+        case "DELETE_REPLY":
+
             return {
                 ...state,
                 replies: state.replies.filter((reply) => reply._id !== action.payload),
-            
 
-               
+
+
             };
-            
+
         case "EDIT_REPLY":
             console.log(action.payload);
             return {

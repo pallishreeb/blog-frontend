@@ -1,0 +1,119 @@
+/**
+ * Navbar.css
+ *
+ * @format
+ */
+
+.navbar {
+  background: #001529;
+  color: white;
+  padding: 17px 40px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 1.11rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.menu-icon:hover {
+  opacity: 0.8;
+}
+
+.menu {
+  display: flex;
+  /* justify-content: space-evenly; */
+  gap: 1rem;
+  margin-left: auto;
+  /* Add padding to the right side of the menu container */
+}
+
+.search {
+  position: relative;
+}
+
+.search-input {
+  width: 200px;
+  height: 20px;
+  padding: 5px 30px 5px 10px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  color: #001529;
+}
+.search-input:focus{
+  outline: 0;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #001529;
+}
+
+.menu-items {
+  display: flex;
+  margin-left: auto; /* Pushes menu items to the right */
+}
+
+.menu-items-vertical {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.menu-item {
+  cursor: pointer;
+  display: flex;
+  /* padding:10px 0px; */
+  align-items: center;
+  color: white;
+  margin-right: 20px; /* Add margin between menu items */
+}
+.menu-item-vertical{
+    cursor: pointer;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  color: white;
+  /* margin-right: 20px; */
+}
+.menu-item:hover{
+   color:#FFC84D;
+}
+.menu-item-vertical:hover{
+  color:#FFC84D ;
+}
+.icon {
+  margin-right: 5px;
+}
+
+.mobile-menu {
+  display: block;
+  margin-top: 10px;
+  border-top: 1px solid white;
+  padding-top: 20px;
+}
+
+@media (max-width: 800px) {
+  .menu {
+    display: none;
+  }
+
+}

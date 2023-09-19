@@ -61,7 +61,7 @@ const EditProfile = () => {
                                   <label> Confirm New Password</label>
                               </div>
                               <div class="pass">Forgot Password?</div>
-                              <input type="submit" value="Submit" />
+                              <input type="submit" className='btn-submit' value="Submit" />
 
                           </form>
                       </Panel>
@@ -74,7 +74,7 @@ const EditProfile = () => {
                                   <label> New Phone Number</label>
                               </div>
                             
-                              <input type="submit" value="Submit" />
+                              <input type="submit" className='btn-submit' value="Submit" />
 
                           </form>
                       </Panel>

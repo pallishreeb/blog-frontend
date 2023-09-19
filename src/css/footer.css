@@ -1,0 +1,30 @@
+/** @format */
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.footer-container h3 {
+  color: #fff;
+}
+
+.footer-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-container ul li {
+  margin: 8px 0;
+
+}
+.footer-container ul{
+    color: gray;
+    
+}
+.footer-container a {
+  color: gray !important;
+  text-decoration: none;
+  cursor: pointer;
+}

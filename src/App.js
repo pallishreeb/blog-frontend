@@ -1,13 +1,12 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from "../src/components/Header";
 import Home from "./pages/home";
 import AppFooter from "./components/Footer";
 import Post from "./pages/post";
 import Profile from "./pages/profile";
 import PrivateRoute from './pages/privateRoute';
 
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Notification from "./pages/notification";
@@ -16,13 +15,14 @@ import Forgotpassword from "./pages/forgotPassword";
 import Resetpassword from "./pages/resetpassword";
 import NotFoundPage from './pages/notFoundPage';
 import Contact from './pages/contact';
+import Navbar from './components/Navbar';
+
 function App() {
-
-
-  const params = useParams()
+  // const params = useParams()
   return (
     <div className="App">
-      <Header params={params} />
+      <Navbar />
+
       <ToastContainer />
 
       <Routes>

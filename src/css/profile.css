@@ -1,0 +1,118 @@
+/** @format */
+
+.authorpage {
+  margin: 1rem auto;
+}
+
+.authorpage .profile-details {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.authorpage .saved-posts {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+/* UserProfileCard.css */
+.user-profile-card {
+  background: linear-gradient(
+    135deg,
+    #001529,
+    #002947
+  ); /* Slightly lighter gradient colors */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 350px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.user-profile-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-avatar {
+  margin-bottom: 20px;
+}
+
+.profile-avatar .ant-avatar {
+  background-color: #0c4174;
+  font-size: 1.5rem;
+  line-height: 40px;
+}
+
+.profile-header h2 {
+  font-size: 1.5rem;
+  margin: 8px 0;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.profile-info p {
+  font-size: 1rem;
+  margin: 8px 0;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Add animation to the card */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-header,
+.profile-info,
+.profile-avatar {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Add a subtle border animation on hover */
+.user-profile-card:hover {
+  border: 2px solid #fff;
+  transition: border 0.3s ease-in-out;
+}
+
+#no-data-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#no-data-img {
+  width: 300px;
+  height: 300px;
+  margin: 0% 35%;
+}
+@media (max-width: 700px) {
+  #no-data-img {
+    margin: 0% 15%;
+  }
+}
+
+@media (max-width: 400px) {
+  #no-data-img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .user-profile-card{
+    max-width: 280px;
+  }
+
+}
+@media (max-width: 290px) {
+  .user-profile-card{
+    max-width:fit-content ;
+  }
+}

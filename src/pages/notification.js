@@ -9,6 +9,7 @@ import {
 import authContext from "../context";
 import { usePostApi } from "../context/PostProvider";
 // import { toast } from 'react-toastify'
+import imgPlaceholder from "../img/no-image.jpg";
 import { Link, useNavigate } from "react-router-dom";
 function Notification() {
     const navigate = useNavigate();
@@ -19,10 +20,6 @@ function Notification() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const authToken = localStorage.getItem("token");
-        if (!authToken) {
-            navigate("/login");
-        }
         const loadNitification = () => {
             setLoading(true);
             allNotifications(token).then((res) => {
@@ -31,8 +28,6 @@ function Notification() {
                     type: "FETCH_NOTIFICATIONS",
                     payload: res,
                 });
-                loadUser(token);
-                // console.log("notifications", res)
                 setLoading(false);
             });
         };
@@ -47,6 +42,7 @@ function Notification() {
             // console.log("removed notifications", res)
         });
     };
+    const navigateToDetails = (id) => navigate(`/post/${id}`);
     return (
         <div>
             {loading ? (
@@ -81,8 +77,11 @@ function Notification() {
                                             </div>
                                         </div>
                                         <div class="notification-list_feature-img">
-                                            <Link to={`/post/${n?.postId?._id}`}>
-                                                <img src={n?.postId?.images[0]} alt="Feature" />
+                                            <Link to={`/post/${n?.commentId?.postId}`}>
+                                                <img
+                                                    src={n?.postId?.images[0] || imgPlaceholder}
+                                                    alt="Feature"
+                                                />
                                             </Link>
                                         </div>
                                     </div>
@@ -91,10 +90,6 @@ function Notification() {
                                 <h1>No Notifications Found for you</h1>
                             )}
                         </div>
-
-                        {/* <div class="text-center">
-            <a href="#!" class="dark-link">Load more activity</a>
-        </div> */}
                     </div>
                 </section>
             )}

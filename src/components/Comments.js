@@ -21,7 +21,7 @@ function Comments({ item, token, user, postId }) {
   const [showEditComment, setShowEditComment] = useState(false);
   const [reply, setReply] = useState("");
   const [comment, setComment] = useState("");
-  const [repliesToShow, setRepliesToShow] = useState(0);
+  const [repliesLengthOfTheComment, setRepliesLengthOfTheComment] = useState(0);
   // let available = replies.some((obj) => obj.commentId === item._id);
   useEffect(() => {
     if (effectRan.current === false) {
@@ -30,17 +30,19 @@ function Comments({ item, token, user, postId }) {
     return () => {
       effectRan.current = true;
     };
-  }, [repliesToShow]);
-
+  }, []);
   // item?._id, token, showReplyBox
   const postreply = () => {
     if (item?._id && token && reply !== "") {
       replyOnComment({ commentId: item._id, reply, postId }, token)
         .then((res) => {
+          
           dispatch({
             type: "ADD_REPLY",
             payload: res.data.response,
           });
+          setRepliesLengthOfTheComment(repliesLengthOfTheComment + 1);
+          setShowReplies(true)
         })
         .catch((err) => {
           console.log("error in add comment", err.response.data);
@@ -53,7 +55,7 @@ function Comments({ item, token, user, postId }) {
   const getReplies = () => {
     if (item?._id) {
       getRepliesOnComment(item._id).then((res) => {
-        setRepliesToShow(res.data.response.length);
+        setRepliesLengthOfTheComment(res.data.response.length);
         dispatch({
           type: "FETCH_REPLIES",
           payload: res.data.response,
@@ -101,7 +103,7 @@ function Comments({ item, token, user, postId }) {
   };
   return (
     <div
-      class="show-comments mt-2"
+      class="show-comments"
       style={{
         outline: "none",
       }}
@@ -121,8 +123,8 @@ function Comments({ item, token, user, postId }) {
             onChange={(e) => setComment(e.target.value)}
             placeholder={"Say something..."}
             autoSize={{
-              minRows: 3,
-              maxRows: 5,
+              minRows: 2,
+              maxRows: 2,
             }}
           />
         </div>
@@ -142,15 +144,15 @@ function Comments({ item, token, user, postId }) {
             onChange={(e) => setReply(e.target.value)}
             placeholder={"Say something..."}
             autoSize={{
-              minRows: 3,
-              maxRows: 5,
+              minRows: 2,
+              maxRows: 2,
             }}
           />
         </div>
       </Modal>
 
       <div className="comment-text">
-        <p className="">
+        <p>
           {item?.createdBy?.name} -{" "}
           {new Date(item?.createdAt).toLocaleString("en-GB", {
             day: "numeric",
@@ -162,7 +164,7 @@ function Comments({ item, token, user, postId }) {
       </div>
 
       <button onClick={() => setShowReplyBox(!showReplyBox)}>Reply </button>
-      {repliesToShow > 0 && (
+      {repliesLengthOfTheComment > 0 && (
         <button
           onClick={() => {
             setShowReplies(!showReplies);
@@ -181,16 +183,22 @@ function Comments({ item, token, user, postId }) {
               setShowEditComment(true);
             }}
           >
-            <i className="fa fa-pencil fa-solid" />
+            Edit
+            {/* <i className="fa fa-pencil fa-solid" /> */}
           </button>
           <button onClick={() => showDeleteConfirm()}>
-            <i className="fa fa-trash fa-solid" />
+            Delete
+            {/* <i className="fa fa-trash fa-solid" /> */}
           </button>
         </>
       )}
 
-      {showReplies && repliesToShow > 0 && (
-        <Replies replies={replies} commentId={item._id} />
+      {showReplies && repliesLengthOfTheComment > 0 && (
+        <>
+          <div className="commentedBy">Replies to {item?.createdBy?.name}</div>
+          <Replies replies={replies} commentId={item._id} setRepliesLengthOfTheComment={setRepliesLengthOfTheComment} repliesLengthOfTheComment={repliesLengthOfTheComment} />
+        </>
+
       )}
     </div>
   );

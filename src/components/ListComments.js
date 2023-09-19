@@ -6,6 +6,7 @@ import { addComment, getComments } from "../networkCalls/comment";
 import authContext from "../context";
 import { useCommentApi } from "../context/commentProvider";
 import Comments from "./Comments";
+import '../css/comments.css'
 const ListComments = () => {
     const navigate = useNavigate();
     const params = useParams();
@@ -31,7 +32,8 @@ const ListComments = () => {
             });
         }
     };
-    const postComment = async () => {
+    const postComment = async (e) => {
+        e.preventDefault()
         if (!token) {
             navigate("/login");
         }
@@ -45,24 +47,20 @@ const ListComments = () => {
         setPage(page + 1);
     };
     return (
-        <>
+        <div id="comment-section">
             {token ? (
-                <div class="comment">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Post your Comment</label>
+                <div className="comment-input-container">
+                    <form onSubmit={postComment}>
                         <textarea
-                            type="text"
-                            class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="Say something..."
-                            name="comment"
+                            className="comment-input"
+                            placeholder="Add your comment..."
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
-                        ></textarea>
-                    </div>
-                    <button className="btn btn-success" onClick={() => postComment()}>
-                        Comment
-                    </button>
+                        />
+                        <button type="submit" className="comment-submit-button">
+                            Post Comment
+                        </button>
+                    </form>
                 </div>
             ) : (
                 <p>
@@ -83,7 +81,7 @@ const ListComments = () => {
                     Load More
                 </button>
             )}
-        </>
+        </div>
     );
 };
 

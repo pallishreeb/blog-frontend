@@ -1,10 +1,11 @@
 /** @format */
 
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useContext } from "react";
 import AuthContext from "./index";
 import authReducer from "./authReducer";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom'
 import { API_URL } from "../config";
 import {
     LOAD_USER_FAIL,
@@ -17,8 +18,10 @@ import {
     VERIFY_FAIL,
     VERIFY_SUCCESS,
 } from "./constants";
+import authContext from "./index";
 
 const AuthState = ({ children }) => {
+    const navigate = useNavigate()
     const initialState = {
         user: null,
         token: null,
@@ -73,6 +76,7 @@ const AuthState = ({ children }) => {
             });
             localStorage.setItem("token", JSON.stringify(res.data.token));
             loadUser(res.data.token);
+            navigate('/')
         } catch (error) {
             console.log(error);
             toast.error(error.response.data.message || "Try sometimes later");
@@ -113,7 +117,6 @@ const AuthState = ({ children }) => {
     };
     const verifyEmail = async (data) => {
         try {
-            console.log(data);
             const config = {
                 headers: {
                     "Content-Type": "application/json",
@@ -124,6 +127,7 @@ const AuthState = ({ children }) => {
             toast.success(res.data.message);
             localStorage.removeItem("emailToVerify");
             dispatch({ type: VERIFY_SUCCESS });
+            // navigate('/login')
         } catch (error) {
             console.log(error);
             toast.error(error.response.data.message);
@@ -213,3 +217,6 @@ const AuthState = ({ children }) => {
 };
 
 export default AuthState;
+
+
+export const useAuthApi = () => useContext(authContext);

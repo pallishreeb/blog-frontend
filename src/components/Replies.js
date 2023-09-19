@@ -10,19 +10,19 @@ import {
 import { Modal } from "antd";
 import TextArea from "antd/es/input/TextArea";
 const { confirm } = Modal;
-function Replies({ replies, commentId }) {
+function Replies({ replies, commentId, setRepliesLengthOfTheComment, repliesLengthOfTheComment }) {
   // console.log("replies", replies);
   const { user, token } = useContext(authContext);
   const { state, dispatch } = useCommentApi();
-  const [replyiesToShow, setReplyiesToShow] = useState([]);
+  const [repliesToShow, setRepliesToShow] = useState([]);
   const [replyToEdit, SetReplyToEdit] = useState("");
   const [showEditModal, setShowEditModal] = useState(false);
   useEffect(() => {
-    setReplyiesToShow(filterReplies());
+    setRepliesToShow(filterReplies());
     // console.log("repliesToShow",replyiesToShow);
-  }, [replies.length, showEditModal]);
+  }, [replies?.length, showEditModal]);
   const filterReplies = () => {
-    return replies.filter((item) => item.commentId === commentId);
+    return replies?.filter((item) => item.commentId === commentId);
   };
 
   const deleteReplyFunc = async (replyId) => {
@@ -32,7 +32,7 @@ function Replies({ replies, commentId }) {
         type: "DELETE_REPLY",
         payload: replyId,
       });
-
+      setRepliesLengthOfTheComment(repliesLengthOfTheComment - 1);
       // setReplyiesToShow(filterReplies())
     }
   };
@@ -69,9 +69,9 @@ function Replies({ replies, commentId }) {
   };
 
   return (
-    <div class=" replies mt-2">
-      {replyiesToShow.length > 0 &&
-        replyiesToShow.map((item, i) => (
+    <div class="replies mt-2">
+      {repliesToShow.length > 0 &&
+        repliesToShow.map((item, i) => (
           <div className="single-reply" key={i}>
             <Modal
               open={showEditModal}
@@ -94,6 +94,7 @@ function Replies({ replies, commentId }) {
                 />
               </div>
             </Modal>
+
             <div className="single-reply-meta">
               <p>
                 {item?.createdBy?.name} -{" "}
@@ -111,10 +112,12 @@ function Replies({ replies, commentId }) {
                       setShowEditModal(true);
                     }}
                   >
-                    <i className="fa fa-pencil fa-solid" />
+                    Edit
+                    {/* <i className="fa fa-pencil fa-solid" /> */}
                   </button>
                   <button onClick={() => showDeleteConfirm(item._id)}>
-                    <i className="fa fa-trash fa-solid" />
+                    Delete
+                    {/* <i className="fa fa-trash fa-solid" /> */}
                   </button>
                 </>
               )}

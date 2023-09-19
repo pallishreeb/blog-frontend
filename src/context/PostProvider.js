@@ -50,6 +50,7 @@ const apiReducer = (state, action) => {
             };
 
         case "FILTER_SEARCHED_POSTS":
+            
             return {
                 ...state,
                 isSearching: true,

@@ -1,69 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+/** @format */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap");
 
-
-
-.center form {
-    
-    padding: 25px 40px;
-    box-sizing: border-box;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+.verify form {
+  padding: 25px 40px;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid silver;
+}
+.verify:hover {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
 }
 
-
-.text_field{
-    display: flex;
-    flex-direction: column;
+.verify h2,
+h6 {
+  text-align: center;
 }
-.text_field .input {
-    width: 80%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16px;
-    border: 1px solid #2691d9 ;
-    border-radius: 10px;
-    background: none;
-    outline: none;
+.verify_text_field {
+  display: flex;
+  flex-direction: column;
 }
-
-.text_field label {
-    color: #2691d9 ;
-    line-height: 1;
-   
+.verify_text_field .input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid #001529;
+  margin: 10px auto;
 }
 
-
-
-.resend_btn{
-    padding-top: 8px;
-   outline: none !important;
+.verify_text_field label {
+  position: relative;
+  top: 50%;
+  left: 5px;
+  color: #001529;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
 }
 
-.timer{
-    padding-top: 8px;
-    color:red ;
+.resend_btn {
+  padding-top: 8px;
+  outline: none !important;
+  color: #001529;
 }
 
-
-
-input[type="submit"] {
-    width: 80%;
-    height: 40px;
-    margin-top: 20px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 8px;
-    font-size: 17px;
-    color: #e9f4fb;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
+.timer {
+  padding-top: 8px;
+  color: red;
 }
 
-input[type="submit"]:hover {
-    border-color: #2691d9;
-    transition: .5s;
+.btn-verify {
+  width: 80%;
+  height: 40px;
+  margin-top: 20px;
+  border: 1px solid;
+  background: #001529;
+  border-radius: 8px;
+  font-size: 17px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
 }
 
+.btn-verify:hover {
+  border-color: #001529;
+  transition: 0.5s;
+}
