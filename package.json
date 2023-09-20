@@ -1,5 +1,5 @@
 {
-    "name": "croztek-frontend",
+    "name": "blog-frontend",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -11,8 +11,6 @@
         "html-to-text": "^9.0.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-icons": "^4.11.0",
-        "react-responsive": "^9.0.2",
         "react-router-dom": "^6.8.1",
         "react-scripts": "5.0.1",
         "react-share": "^4.4.1",

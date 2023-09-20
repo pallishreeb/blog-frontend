@@ -100,6 +100,7 @@
 .hover\:bg-brightRedLight:hover {
   background-color: #ffc84d;
   color: #001529;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .hero {

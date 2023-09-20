@@ -65,7 +65,7 @@ const ListComments = () => {
             ) : (
                 <p>
                     {" "}
-                    <Link to="/login">Login to Comment </Link>
+                    <Link to="/login" className="btn-link">Login to Comment </Link>
                 </p>
             )}
 

@@ -164,7 +164,7 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-content">
         <Link to={"/"}>
-          <div className="logo">Kroztek</div>
+          <div className="logo">Crosstech</div>
         </Link>
 
         {isSmallScreen ? (

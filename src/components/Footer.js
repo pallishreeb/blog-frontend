@@ -1,21 +1,24 @@
-import React from 'react';
-import { Layout, Row, Col } from 'antd';
-import { usePostApi } from '../context/PostProvider'
-import { MailOutlined, PhoneOutlined, EnvironmentOutlined, MessageOutlined } from '@ant-design/icons'; // You can import other icons as needed
-import "../css/footer.css"
+/** @format */
+
+import React from "react";
+import { Layout, Row, Col } from "antd";
+import { usePostApi } from "../context/PostProvider";
+import {
+	MailOutlined,
+	PhoneOutlined,
+	EnvironmentOutlined,
+	MessageOutlined,
+} from "@ant-design/icons";
+import "../css/footer.css";
 const { Footer } = Layout;
-// "mailto:youremail@example.com?subject=Email%20Subject&body=Hello%2C%20I%20want%20to%20email"
-// "https://wa.me/+918144128737/?text=Hello%2C%20I%20want%20to%20chat"
+
 function AppFooter() {
-	const { state } = usePostApi()
-	const { metadata } = state
+	const { state } = usePostApi();
+	const { metadata } = state;
 	return (
-		<Footer style={{ backgroundColor: '#001529', color: '#fff' }}>
-			<div className='footer-container'
-			>
+		<Footer style={{ backgroundColor: "#001529", color: "#fff" }}>
+			<div className="footer-container">
 				<Row gutter={[16, 16]} justify="center" align="middle">
-
-
 					{/* Quick Links */}
 					{/* <Col className='links' xs={24} sm={24} md={8} lg={8}>
 						<h3>Quick Links</h3>
@@ -43,21 +46,14 @@ function AppFooter() {
 						<h3>Direct Contact</h3>
 						<ul>
 							<li>
-
-
-
-
-								<a href="https://wa.me/+918144128737/?text=Hello%2C%20I%20want%20to%20chat">
+								<a href={`https://wa.me/${metadata?.phoneNumber || "+918144128737"}/?text=Hello%2C%20I%20want%20to%20chat`}>
 									<MessageOutlined /> Chat via WhatsApp
 								</a>
-
 							</li>
 							<li>
-
-								<a href="mailto:youremail@example.com?subject=Email%20Subject&body=Hello%2C%20I%20want%20to%20email">
-									<MailOutlined />  Email at kroztek@gmail.com
+								<a href={`mailto:${metadata?.email || "shreelearning.tech@gmail.com"}?subject=Email%20Subject&body=Hello%2C%20I%20want%20to%20email`}>
+									<MailOutlined /> Contact Via Email
 								</a>
-
 							</li>
 						</ul>
 					</Col>
@@ -67,29 +63,36 @@ function AppFooter() {
 						<h3>Contact Us</h3>
 						<ul>
 							<li>
-								<strong>Office Location:</strong> <EnvironmentOutlined /> {" "}Gokuldham Society , Mumbai
+								<strong>Office Location:</strong> <EnvironmentOutlined />{" "}
+								Odisha
 							</li>
 							<li>
-								<strong>Call Us at:</strong>{' '}
-								<a href="tel:+918144128737" >
-									<PhoneOutlined /> {" "} +918144128737
+								<strong>Call Us at:</strong>{" "}
+								<a href="tel:+918144128737">
+									<PhoneOutlined /> +91-9999999999
 								</a>
 							</li>
-
 						</ul>
 					</Col>
 				</Row>
 
 				<Row justify="center">
 					<Col xs={24}>
-						<p style={{ textAlign: 'center', margin: '20px 0', fontSize: '14px' }}>
-							&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.
+						<p
+							style={{
+								textAlign: "center",
+								margin: "20px 0",
+								fontSize: "14px",
+							}}
+						>
+							&copy; {new Date().getFullYear()} Crosstech. All rights
+							reserved.
 						</p>
 					</Col>
 				</Row>
 			</div>
-		</Footer>
-	)
+		</Footer >
+	);
 }
 
-export default AppFooter
+export default AppFooter;
