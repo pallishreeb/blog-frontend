@@ -109,16 +109,11 @@ function Home() {
 
             <section class="featured-posts">
               <Skeleton active loading={loading}>
-                <div
-                  class="section-title"
-                  style={{
-                    margin: "auto 16px",
-                  }}
-                >
-                  <h2>
-                    <span>Most Viewed</span>
-                  </h2>
-                </div>
+
+                <h2 class="section-title">
+                  Most Read Articles
+                </h2>
+
                 <BlogCard token={token} posts={mostViewedPosts} postLoading={loading} />
               </Skeleton>
             </section>
@@ -128,16 +123,12 @@ function Home() {
 
         <section class="recent-posts">
           <Skeleton active loading={loading}>
-            <div
-              class="section-title"
-              style={{
-                margin: "auto 16px",
-              }}
-            >
-              <h2 id="all-stories">
-                <span>All Stories</span>
-              </h2>
-            </div>
+
+            <h2 class="section-title" id="all-stories">
+              Latest Articles
+          
+            </h2>
+      
 
             <BlogCard token={token} posts={postsToRender} postLoading={loading} />
             <Pagination

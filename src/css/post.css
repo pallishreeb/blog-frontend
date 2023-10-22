@@ -74,7 +74,11 @@
   width: 100%;
   margin: 0 auto;
 }
+.article-post{
+  font-size: 1.3rem;
+  
 
+}
 
 .after-post-tags li{
   list-style-type: none;

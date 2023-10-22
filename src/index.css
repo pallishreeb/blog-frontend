@@ -93,3 +93,18 @@ ul {
   border-radius: 25px;
   cursor: pointer;
 }
+.section-title{
+  padding-bottom: 10px;
+  border-bottom: 0.7px solid gray;
+  max-width: 96%;
+}
+.recent-posts,
+.featured-posts {
+  margin: auto 5rem;
+}
+@media (max-width: 830px) {
+  .recent-posts,
+  .featured-posts {
+    margin: auto 0rem;
+  }
+}

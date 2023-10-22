@@ -72,56 +72,54 @@ const BlogCard = ({ posts }) => {
     <div className="custom-card-grid">
       {posts?.length > 0 &&
         posts.map((post, index) => (
-       
-            <div key={index} className="blog-card">
-              <div
-                className="card-image"
+          <div key={index} className="blog-card">
+            <div
+              className="card-image"
+              onClick={() => navigateToDetails(post?._id)}
+            >
+              <img
+                src={post?.images[0] || imgPlaceholder}
+                alt="Blog Thumbnail"
+              />
+            </div>
+            <div className="card-content">
+              <h2 className="blog-title">
+                {post.title}
+              </h2>
+              <p
+                className="blog-details"
                 onClick={() => navigateToDetails(post?._id)}
               >
-                <img
-                  src={post?.images[0] || imgPlaceholder}
-                  alt="Blog Thumbnail"
-                />
-                <h2 className="blog-title">
-                  {post.title.trim().slice(0, 30)}...
-                </h2>
-              </div>
-              <div className="card-content">
-                <p
-                  className="blog-details"
-                  onClick={() => navigateToDetails(post?._id)}
-                >
-                  {htmlToText(post?.text).split("", 180)}.....
-                </p>
-                <div className="card-info">
-                  <span className="blog-date">
-                    {" "}
-                    {new Date(post?.createdAt).toLocaleString("en-GB", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                    })}
-                  </span>
+                {htmlToText(post?.text).split("", 180)}.....
+              </p>
+              <div className="card-info">
+                <span className="blog-date">
+                  {" "}
+                  {new Date(post?.createdAt).toLocaleString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
+                </span>
 
-                  {savedPosts?.length > 0 && isSaved(post?._id) === true ? (
-                    <HeartFilled
-                      onClick={() => removeSavedPostId(post?._id)}
-                      className="save-icon"
-                      style={{ fontSize: "24px", color: "#001529" }}
-                    />
-                  ) : (
-                    <HeartOutlined
-                      onClick={() => savePostForUser(post?._id)}
-                      className="save-icon"
-                      style={{ fontSize: "24px", color: "#001529" }}
-                    />
-                  )}
-                </div>
+                {savedPosts?.length > 0 && isSaved(post?._id) === true ? (
+                  <HeartFilled
+                    onClick={() => removeSavedPostId(post?._id)}
+                    className="save-icon"
+                    style={{ fontSize: "24px", color: "#001529" }}
+                  />
+                ) : (
+                  <HeartOutlined
+                    onClick={() => savePostForUser(post?._id)}
+                    className="save-icon"
+                    style={{ fontSize: "24px", color: "#001529" }}
+                  />
+                )}
               </div>
             </div>
-          
+          </div>
         ))}
     </div>
   );

@@ -6,10 +6,10 @@
 
 /* Blog Card Styling */
 .blog-card {
-  max-width: 300px;
-  margin: 20px;
+  max-width: 90%;
+  /* margin: 10px -10px -10px 30px; */
   background-color: #fff;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -35,17 +35,8 @@
 }
 
 .blog-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   margin: 0;
-  padding: 14px 0px;
-  background-color: rgba(0, 21, 41, 0.8);
-  color: #fff;
   font-size: 17px;
-  text-align: center;
-  z-index: 1; /* Place the title above the image */
 }
 
 .blog-card:hover .card-image img {
@@ -54,7 +45,6 @@
 
 .card-content {
   padding: 10px 16px;
-
   background-color: #fff;
 }
 
@@ -69,6 +59,7 @@
   align-items: center;
   padding: 8px 16px;
   background-color: #f7f7f7;
+  margin-bottom: 1rem;
 }
 
 .blog-date {
@@ -91,9 +82,12 @@
 /* CustomCardGrid.css */
 
 .custom-card-grid {
+ 
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
-  gap: 20px; /* Adjust the gap as needed */
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr); /* 4 columns on large screens */
+  grid-row-gap: 40px;
   margin-bottom: 40px;
 }
 
@@ -112,10 +106,9 @@
 @media (max-width: 576px) {
   .blog-card {
     max-width: 400px;
-    margin:auto  35px;
+    margin: auto 35px;
   }
   .custom-card-grid {
     grid-template-columns: repeat(1, 1fr); /* 1 column on extra-small screens */
-    
   }
 }

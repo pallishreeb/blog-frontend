@@ -87,6 +87,9 @@ function Post() {
             <div className="mainheading">
 
               <Share post={post} />
+              <div className="mainheading">
+                <h1 className="posttitle">{post?.title}</h1>
+              </div>
               <div className="post-heading">
                 <span className="post-date">
                   <CalendarOutlined />{" "}
@@ -125,11 +128,7 @@ function Post() {
                 ))}
             </Carousel>
           </Skeleton>
-          <Skeleton active loading={loading} paragraph={{ rows: 1 }}>
-            <div className="mainheading">
-              <h1 className="posttitle">{post?.title}</h1>
-            </div>
-          </Skeleton>
+      
           {/* blog description */}
           <Skeleton active loading={loading} paragraph={{ rows: 4 }}>
             <div className="article-post" ref={wrapperRef}>
